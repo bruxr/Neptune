@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Albums{% endblock %}
+
+{% block content %}
+  <h1>{{ album.name }}</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'albums' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ album.name }}</li>
+    </ol>
+  </nav>
+
+  <ul class="nav flex-column">
+    {% for collection in collections %}
+    <li class="nav-item">
+      <a href="{% url 'photos' album=album.name month=collection.name %}" class="nav-link"><i class="fa fa-folder"></i> {{ collection.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ collection.month|date:"F Y" }}{% endblock %}
+
+{% block content %}
+  <h1>{{ collection.month|date:"F Y" }}</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'albums' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'collection' album=album.name %}">{{ album.name }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ collection.name }}</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    {% for photo in photos %}
+    <article class="col-2">
+      <div class="card">
+        <a href="{{ photo.fullsize_url }}" target="_blank">
+          <img src="{{ photo.thumbnail_url }}" alt="{{ photo.name }}" class="card-img-top">
+        </a>
+        <div class="card-body">
+          <strong class="card-title"><a href="{{ photo.fullsize_url }}" target="_blank">{{ photo.name }}</a></strong>
+          <p class="card-text">{{ photo.size|filesizeformat }}</p>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+{% endblock %}
