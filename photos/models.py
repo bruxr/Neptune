@@ -6,6 +6,7 @@ from .helpers import listdir, listfiles, load_json
 from django.core.files.storage import default_storage
 from django.utils.dateparse import parse_datetime, parse_date
 
+
 class Album:
     def __init__(self, name, base_path, created_at):
         """Creates an Album object with the provided properties"""
