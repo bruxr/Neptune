@@ -13,7 +13,7 @@ class AlbumsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        data['albums'] = Album.get_all()
+        data['albums'] = Album.all()
         return data
 
 
@@ -29,7 +29,7 @@ class CollectionsView(TemplateView):
             raise Http404('Album does not exist')
 
         data['album'] = album
-        data['collections'] = album.get_collections()
+        data['collections'] = album.collections()
         return data
 
 
@@ -47,5 +47,5 @@ class PhotosView(TemplateView):
 
         data['album'] = album
         data['collection'] = coll
-        data['photos'] = coll.get_photos()
+        data['photos'] = coll.photos()
         return data

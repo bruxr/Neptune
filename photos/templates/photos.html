@@ -17,11 +17,11 @@
     {% for photo in photos %}
     <article class="col-2">
       <div class="card">
-        <a href="{{ photo.fullsize_url }}" target="_blank">
-          <img src="{{ photo.thumbnail_url }}" alt="{{ photo.name }}" class="card-img-top">
+        <a href="#" target="_blank">
+          <img src="{{ photo.thumbnail }}" alt="{{ photo.name }}" class="card-img-top">
         </a>
         <div class="card-body">
-          <strong class="card-title"><a href="{{ photo.fullsize_url }}" target="_blank">{{ photo.name }}</a></strong>
+          <strong class="card-title"><a href="#" target="_blank">{{ photo.name }}</a></strong>
           <p class="card-text">{{ photo.size|filesizeformat }}</p>
         </div>
       </div>
