@@ -64,6 +64,14 @@ class S3Storage(Storage):
         self.client.download_file(self.bucket, path, tmpfile.name)
         return tmpfile
 
+    def url(self, name):
+        path = self._format_key(name)
+        return self.client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': self.bucket, 'Key': path},
+            ExpiresIn=3600 * 4  # Expires in 4 hours
+        )
+
     def _format_key(self, key):
         if key == '/':
             key = ''
