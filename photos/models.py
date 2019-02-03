@@ -135,19 +135,12 @@ class Photo:
         self.size = size
         self.path = path
 
-    def thumbnail_url(self):
-        return '%s%s/thumbnails/%s' % (
-            settings.MEDIA_URL,
-            self.collection,
-            self.name,
-        )
+    def thumbnail(self):
+        thumb = '%s/%s/thumbs/%s' % (self.album, self.collection, self.name)
+        return storage.url(thumb)
 
-    def fullsize_url(self):
-        return '%s%s/photos/%s' % (
-            settings.MEDIA_URL,
-            self.collection,
-            self.name,
-        )
+    def url(self):
+        return storage.url(self.path)
 
     def __str__(self):
         return self.name
